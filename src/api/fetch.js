@@ -42,6 +42,7 @@ export default async function Fetch(endpoint, Detail = {}) {
                     mergedOptions.headers.Authorization = `Bearer ${newToken}`;
                     response = await fetch(`${url}/${endpoint}`, mergedOptions);
                 } else {
+                    console.log('tokens expired please login again');
                     throw new Error("Refresh token expired or invalid please login again");
                 }
             } catch (error) {

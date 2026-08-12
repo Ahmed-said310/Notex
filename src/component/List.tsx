@@ -14,7 +14,9 @@ export default function List({ onNavigate }: { onNavigate?: () => void }) {
         setNotes(res);
       } catch (err) {
         if(err === 'Invalid token'){
-          window.location.href = './login'
+          window.location.href = '/login'
+          console.log('Invalid token. Please login again.');
+          return;
         }
         console.error("Error fetching notes:", err);
       }
@@ -25,7 +27,7 @@ export default function List({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <ul className="space-y-1">
       {notes.map((note: any) => (
-        <li key={note.id}>
+        <li key={note._id}>
           <button 
             onClick={() => { 
                 navigate(`/note/${note._id}`); 
