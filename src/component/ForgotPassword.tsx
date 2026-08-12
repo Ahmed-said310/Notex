@@ -39,7 +39,8 @@ export default function ForgotPassword() {
         setIsSent(true);
       }
     } catch (err: any) {
-      setError("We couldn't process your request. Please try again.");
+      setError("An error occurred while sending the reset link. Please try again.");
+      console.log("Forgot Password Error:", err);
     } finally {
       setLoading(false);
     }

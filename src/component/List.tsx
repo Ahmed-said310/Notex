@@ -13,6 +13,9 @@ export default function List({ onNavigate }: { onNavigate?: () => void }) {
         const res = await Fetch("tasks");
         setNotes(res);
       } catch (err) {
+        if(err === 'Invalid token'){
+          window.location.href = './login'
+        }
         console.error("Error fetching notes:", err);
       }
     };
